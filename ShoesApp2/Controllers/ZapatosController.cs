@@ -83,8 +83,15 @@ namespace ShoesApp2.Controllers
             {
                 using (var db = new DataProductsEntities())
                 {
+                    
+
                     Products p = db.Products.Find(e.Id);
                     p.Nombre = e.Nombre;
+                    p.Description = e.Description;
+                    p.PriceClient = e.PriceClient;
+                    p.IsEnabled = e.IsEnabled;
+                    p.DateUpdate = DateTime.Now;
+
 
                     db.SaveChanges();
 
