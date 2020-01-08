@@ -1,0 +1,8 @@
+﻿@model IEnumerable<ShoesApp2.Models.CatColors>
+
+<select class="from-control" id="IdColor" name="IdColor">
+    @foreach (var item in Model)
+    {
+        <option value="@item.IdColor" > @item.Name</option>
+    }
+</select>

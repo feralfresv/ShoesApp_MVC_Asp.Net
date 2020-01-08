@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.IdType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdColor)
+            @Html.DisplayNameFor(model => model.IdColor)       
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IdBrand)
@@ -72,7 +72,8 @@
                 @Html.DisplayFor(modelItem => item.IdType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdColor)
+                @ShoesApp2.Controllers.ZapatosController.NombreColor(item.IdColor.Value)
+                @*@Html.DisplayFor(modelItem => item.IdColor)*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdBrand)
@@ -115,10 +116,18 @@
             </td>
             <td>
                 @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Imagen", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "aElimina" })
             </td>
         </tr>
     }
-
 </table>
+@section scripts{
+<script>
+    $(".aElimina").click(function (event) {
+        if (!confirm('Estas seguro de eliminarlo? (Eliminado Logico)')) {
+            event.preventDefault();
+        }
+    });
+</script>
+}

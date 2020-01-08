@@ -83,10 +83,11 @@ namespace ShoesApp2.Controllers
             {
                 using (var db = new DataProductsEntities())
                 {
-                    
+
 
                     Products p = db.Products.Find(e.Id);
                     p.Nombre = e.Nombre;
+                    p.IdColor = e.IdColor;
                     p.Description = e.Description;
                     p.PriceClient = e.PriceClient;
                     p.IsEnabled = e.IsEnabled;
@@ -96,15 +97,43 @@ namespace ShoesApp2.Controllers
                     db.SaveChanges();
 
                     return RedirectToAction("Index");
-                }              
+                }
             }
             catch (Exception)
             {
 
                 throw;
             }
-            
+
         }
 
+
+
+        public ActionResult Delete(int id)
+        {
+            using (var db = new DataProductsEntities())
+            {
+                FASV1_GetAllProducts_Result Ez = db.FASV1_GetAllProducts().Where(a => a.Id == id).FirstOrDefault();
+                db.FASV1_DeleteLogic(id);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }                
+        }
+
+        public ActionResult ListaColor()
+        {
+            using (var db = new DataProductsEntities())
+            {
+                return PartialView(db.CatColors.ToList());
+            }
+        }
+
+        public static string NombreColor(int IdColor)
+        {
+            using (var db = new DataProductsEntities())
+            {
+                return db.CatColors.Find(IdColor).Name;
+            }
+        }
     }
 }

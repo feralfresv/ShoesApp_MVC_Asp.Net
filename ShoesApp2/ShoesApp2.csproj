@@ -333,6 +333,7 @@
     <Content Include="Views\Zapatos\Index.cshtml" />
     <Content Include="Views\Zapatos\Agregar.cshtml" />
     <Content Include="Views\Zapatos\Editar.cshtml" />
+    <Content Include="Views\Zapatos\ListaColor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
