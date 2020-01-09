@@ -20,7 +20,7 @@ namespace ShoesApp2.Controllers
 
                 return View(db.FASV1_GetAllProducts());
             }
-            catch (Exception)
+            catch (Exception) 
             {
                 throw;
             }

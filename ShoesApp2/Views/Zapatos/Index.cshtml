@@ -9,6 +9,11 @@
 
 <p>
     @Html.ActionLink("Create Nuevo Zapato", "Agregar")
+    @using (Html.BeginForm("BuscarNombre", "Zapatos", FormMethod.Get))
+    {
+        <input class="form-control mr-sm-2" type="text" name="name" placeholder="Buscar por ID o Nombre"/>
+        <input class="btn btn-secondary my-2 my-sm-0" type="submit" name="submit" value="Buscar"/>
+    }
 </p>
 <form class="form-inline my-2 my-lg-0">
     <input class="form-control mr-sm-2" type="text" placeholder="Buscar por ID o Nombre">
@@ -18,10 +23,13 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.IdType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdColor)       
+            @Html.DisplayNameFor(model => model.IdColor)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IdBrand)
@@ -67,59 +75,62 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdType)
-            </td>
-            <td>
-                @ShoesApp2.Controllers.ZapatosController.NombreColor(item.IdColor.Value)
-                @*@Html.DisplayFor(modelItem => item.IdColor)*@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdBrand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdProvider)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCatalog)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observations)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriceDistributor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriceClient)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriceMember)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsEnabled)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Keywords)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateUpdate)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                @Html.ActionLink("Imagen", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "aElimina" })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdType)
+        </td>
+        <td>
+            @ShoesApp2.Controllers.ZapatosController.NombreColor(item.IdColor.Value)
+            @*@Html.DisplayFor(modelItem => item.IdColor)*@
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdBrand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdProvider)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdCatalog)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observations)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceDistributor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceMember)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsEnabled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keywords)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateUpdate)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+            @Html.ActionLink("Imagen", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "aElimina" })
+        </td>
+    </tr>
     }
 </table>
 @section scripts{
