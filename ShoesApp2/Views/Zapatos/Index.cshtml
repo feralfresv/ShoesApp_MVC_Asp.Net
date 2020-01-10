@@ -11,15 +11,16 @@
 @using (Html.BeginForm("Index", "", FormMethod.Get))
 {
 
-    <form class="form-inline my-2 my-lg-0">
-        @Html.TextBox("searching", "Id", new { @class = "form-control mr-sm-1" })
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
+<form class="form-inline my-2 my-lg-0">
+    ID @Html.TextBox("searching", null, new { @class = "form-control mr-sm-1", @autofocus = "autofocus" })
+    Nombre @Html.TextBox("Bnombre", null, new { @class = "form-control mr-sm-2" })
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+</form>
 
-    <form class="form-inline my-2 my-lg-0">
+    @*<form class="form-inline my-2 my-lg-0">
         @Html.TextBox("Bnombre", "Nombre", new { @class = "form-control mr-sm-2" })
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
+    </form>*@
 }
 
 <p>
@@ -149,5 +150,9 @@
                 event.preventDefault();
             }
         });
+
+        $(function () {
+            $("#")
+        })
     </script>
 }

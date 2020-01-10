@@ -36,6 +36,9 @@ namespace ShoesApp2.Controllers
 
                 }
 
+                ViewBag.Search = null;
+                ModelState.Remove("searching");
+                ModelState.Remove("Bnombre");
 
 
                 return View(zapatos.ToList());
