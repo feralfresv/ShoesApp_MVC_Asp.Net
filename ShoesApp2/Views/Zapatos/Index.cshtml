@@ -1,27 +1,44 @@
 ﻿@model IEnumerable<ShoesApp2.Models.FASV1_GetAllProducts_Result>
 
 @{
+    /**/
+
     ViewBag.Title = "Lista de Zapatos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Tabla de Zapatos (ShoesApp)</h2>
+@using (Html.BeginForm("Index", "", FormMethod.Get))
+{
+
+    <form class="form-inline my-2 my-lg-0">
+        @Html.TextBox("searching", "Id", new { @class = "form-control mr-sm-1" })
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+
+    <form class="form-inline my-2 my-lg-0">
+        @Html.TextBox("Bnombre", "Nombre", new { @class = "form-control mr-sm-2" })
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+}
 
 <p>
     @Html.ActionLink("Create Nuevo Zapato", "Agregar")
-</p>
-<form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="text" placeholder="Buscar por ID o Nombre">
-    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
-</form>
 
-<table class="table">
+</p>
+
+
+
+<table class="table tabl">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.IdType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdColor)       
+            @Html.DisplayNameFor(model => model.IdColor)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IdBrand)
@@ -68,6 +85,9 @@
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdType)
             </td>
@@ -123,11 +143,11 @@
     }
 </table>
 @section scripts{
-<script>
-    $(".aElimina").click(function (event) {
-        if (!confirm('Estas seguro de eliminarlo? (Eliminado Logico)')) {
-            event.preventDefault();
-        }
-    });
-</script>
+    <script>
+        $(".aElimina").click(function (event) {
+            if (!confirm('Estas seguro de eliminarlo? (Eliminado Logico)')) {
+                event.preventDefault();
+            }
+        });
+    </script>
 }

@@ -11,14 +11,34 @@ namespace ShoesApp2.Controllers
     public class ZapatosController : Controller
     {
         // GET: Zapatos
-        public ActionResult Index()
+        DataProductsEntities db = new DataProductsEntities();
+
+        public ActionResult Index(string searching, string Bnombre)
         {
             try
             {
-                DataProductsEntities db = new DataProductsEntities();
-                //db.FASV1_GetAllProducts();
 
-                return View(db.FASV1_GetAllProducts());
+
+                var zapatos = from s in db.FASV1_GetAllProducts()
+                              select s;
+
+                if (!String.IsNullOrEmpty(searching))
+                {
+                    zapatos = zapatos
+                        .Where(s => s.Id == Convert.ToInt32(searching));
+              
+                }
+
+                if (!String.IsNullOrEmpty(Bnombre))
+                {
+                    zapatos = zapatos
+                        .Where(s => s.Nombre.Contains(Bnombre));
+
+                }
+
+
+
+                return View(zapatos.ToList());
             }
             catch (Exception)
             {
@@ -136,4 +156,4 @@ namespace ShoesApp2.Controllers
             }
         }
     }
-}
+}   
